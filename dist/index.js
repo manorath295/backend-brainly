@@ -133,6 +133,22 @@ app.post("/api/v1/content", middleware_1.default, (req, res) => __awaiter(void 0
     }
 }));
 // @ts-ignore 
+app.get("/api/v1/content", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // @ts-ignore
+        const userId = req.user._id;
+        const contents = yield db_1.Content.find({ userId }).populate("tags");
+        res.json({ success: true, contents });
+    }
+    catch (err) {
+        let errorMessage = "Unknown error";
+        if (err instanceof Error) {
+            errorMessage = err.message;
+        }
+        res.status(401).send("Error fetching content: " + errorMessage);
+    }
+}));
+// @ts-ignore 
 app.delete("/api/v1/content", middleware_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { contentid } = req.body;
