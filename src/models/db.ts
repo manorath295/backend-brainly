@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const {Schema,model} = mongoose;
 
 
-mongoose.connect('mongodb+srv://chughmanorath:HfiEXba0ytWA2S8F@cluster0.2pmsbm7.mongodb.net/brainly')
+mongoose.connect('')
 const userSchema=new Schema({
     username:{
         type:String,
